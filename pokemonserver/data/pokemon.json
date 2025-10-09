@@ -1,0 +1,229 @@
+[
+    {
+        "imageUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/125.png",
+        "name": "Electabuzz",
+        "number": 125,
+        "types": [
+            "Electric"
+        ]
+    },
+    {
+        "imageUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/126.png",
+        "name": "Magmar",
+        "number": 126,
+        "types": [
+            "Fire"
+        ]
+    },
+    {
+        "imageUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/127.png",
+        "name": "Pinsir",
+        "number": 127,
+        "types": [
+            "Bug"
+        ]
+    },
+    {
+        "imageUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/128.png",
+        "name": "Tauros",
+        "number": 128,
+        "types": [
+            "Normal"
+        ]
+    },
+    {
+        "imageUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/129.png",
+        "name": "Magikarp",
+        "number": 129,
+        "types": [
+            "Water"
+        ]
+    },
+    {
+        "imageUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/130.png",
+        "name": "Gyarados",
+        "number": 130,
+        "types": [
+            "Water",
+            "Flying"
+        ]
+    },
+    {
+        "imageUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/131.png",
+        "name": "Lapras",
+        "number": 131,
+        "types": [
+            "Water",
+            "Ice"
+        ]
+    },
+    {
+        "imageUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png",
+        "name": "Ditto",
+        "number": 132,
+        "types": [
+            "Normal"
+        ]
+    },
+    {
+        "imageUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/133.png",
+        "name": "Eevee",
+        "number": 133,
+        "types": [
+            "Normal"
+        ]
+    },
+    {
+        "imageUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/134.png",
+        "name": "Vaporeon",
+        "number": 134,
+        "types": [
+            "Water"
+        ]
+    },
+    {
+        "imageUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/135.png",
+        "name": "Jolteon",
+        "number": 135,
+        "types": [
+            "Electric"
+        ]
+    },
+    {
+        "imageUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/136.png",
+        "name": "Flareon",
+        "number": 136,
+        "types": [
+            "Fire"
+        ]
+    },
+    {
+        "imageUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/137.png",
+        "name": "Porygon",
+        "number": 137,
+        "types": [
+            "Normal"
+        ]
+    },
+    {
+        "imageUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/138.png",
+        "name": "Omanyte",
+        "number": 138,
+        "types": [
+            "Rock",
+            "Water"
+        ]
+    },
+    {
+        "imageUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/139.png",
+        "name": "Omastar",
+        "number": 139,
+        "types": [
+            "Rock",
+            "Water"
+        ]
+    },
+    {
+        "imageUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/140.png",
+        "name": "Kabuto",
+        "number": 140,
+        "types": [
+            "Rock",
+            "Water"
+        ]
+    },
+    {
+        "imageUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/141.png",
+        "name": "Kabutops",
+        "number": 141,
+        "types": [
+            "Rock",
+            "Water"
+        ]
+    },
+    {
+        "imageUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/142.png",
+        "name": "Aerodactyl",
+        "number": 142,
+        "types": [
+            "Rock",
+            "Flying"
+        ]
+    },
+    {
+        "imageUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/143.png",
+        "name": "Snorlax",
+        "number": 143,
+        "types": [
+            "Normal"
+        ]
+    },
+    {
+        "imageUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/144.png",
+        "name": "Articuno",
+        "number": 144,
+        "types": [
+            "Ice",
+            "Flying"
+        ]
+    },
+    {
+        "imageUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/145.png",
+        "name": "Zapdos",
+        "number": 145,
+        "types": [
+            "Electric",
+            "Flying"
+        ]
+    },
+    {
+        "imageUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/146.png",
+        "name": "Moltres",
+        "number": 146,
+        "types": [
+            "Fire",
+            "Flying"
+        ]
+    },
+    {
+        "imageUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/147.png",
+        "name": "Dratini",
+        "number": 147,
+        "types": [
+            "Dragon"
+        ]
+    },
+    {
+        "imageUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/148.png",
+        "name": "Dragonair",
+        "number": 148,
+        "types": [
+            "Dragon"
+        ]
+    },
+    {
+        "imageUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/149.png",
+        "name": "Dragonite",
+        "number": 149,
+        "types": [
+            "Dragon",
+            "Flying"
+        ]
+    },
+    {
+        "imageUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/150.png",
+        "name": "Mewtwo",
+        "number": 150,
+        "types": [
+            "Psychic"
+        ]
+    },
+    {
+        "imageUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/151.png",
+        "name": "Mew",
+        "number": 151,
+        "types": [
+            "Psychic"
+        ]
+    }
+]

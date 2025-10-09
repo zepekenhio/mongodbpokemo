@@ -1,0 +1,19 @@
+{
+  "name": "poke-mongodb",
+  "version": "1.0.0",
+  "description": "A Pokémon API",
+  "main": "server/index.js",
+  "scripts": {
+    "start": "nodemon server",
+    "seed:db": "node server/db/seed"
+  },
+  "author": "You!",
+  "private": true,
+  "license": "UNLICENSED",
+  "dependencies": {
+    "express": "^4.15.4"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
+}
