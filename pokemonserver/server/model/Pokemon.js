@@ -1,5 +1,4 @@
 // This is the model
-
 var mongoose = require('mongoose');
 const db = require('../db/index.js');
 
@@ -23,6 +22,11 @@ var pokemonSchema = new mongoose.Schema({
     ],
     imageUrl: {
         type: String,
+        required: false
+    },
+    trainer: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Trainer',
         required: false
     }
     
