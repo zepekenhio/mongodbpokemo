@@ -1,16 +1,18 @@
 var express = require('express');
 var db = require('./db');
 var pokemonRouter = require('./router/pokemonRouter');
+var rateLimiter = require('./middleware/rateLimiter');
 
 
 var app = express();
 
 app.use(express.json());
+app.use(rateLimiter);
 
 
 
 // TODO: Import the pokemonRouter and assign it to the correct route:
-app.use('/api/pokemons', pokemonRouter);
+app.use('/api/pokemons', rateLimiter, pokemonRouter);
 
 
 var PORT = 3000;
