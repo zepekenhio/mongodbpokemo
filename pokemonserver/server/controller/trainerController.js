@@ -1,3 +1,4 @@
+const Pokemon = require('../model/Pokemon');
 var Trainer = require('../model/Trainer');
 
 var controller = {
@@ -15,16 +16,14 @@ var controller = {
             .catch(err => res.status(400).json({ error: err.message }));
     },
 
-    getTrainerById: function (req, res) {
+    getTrainerById: async function (req, res) {
         const { id } = req.params;
-        Trainer.findById(id).populate('pokemons', 'number name')
-            .then(trainer => {
-                if (!trainer) {
-                    return res.status(404).json({ error: 'Trainer not found' });
-                }
-                res.status(200).json(trainer);
-            })
-            .catch(err => res.status(400).json({ error: err.message }));
+        const pokemons = await Pokemon.find({ trainer: id }).select('number name types imageUrl');
+        const trainer = await Trainer.findById(id);
+        if (!trainer) {
+            return res.status(404).json({ error: 'Trainer not found' });
+        }
+        res.status(200).json({ trainer, pokemons });
     },
 
     updateTrainer: function (req, res) {

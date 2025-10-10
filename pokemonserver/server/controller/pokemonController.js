@@ -17,7 +17,7 @@ const controller = {
 
   retrieveOne: function (req, res) {
     const { id } = req.params;
-    Pokemon.findById(id)
+    Pokemon.findById(id).populate('trainer', 'name age').populate('zone', 'name region')
       .then(pokemon => {
         if (!pokemon) {
           return res.status(404).json({ error: 'Pokemon not found' });

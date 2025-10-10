@@ -28,7 +28,13 @@ var pokemonSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Trainer',
         required: false
-    }
+    },
+    zone: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Zone',
+        }
+    ]
     
 });
  
