@@ -1,6 +1,7 @@
 {
   "name": "poke-mongodb",
   "version": "1.0.0",
+  "type": "commonjs",
   "description": "A Pokémon API",
   "main": "server/index.js",
   "scripts": {
@@ -11,7 +12,8 @@
   "private": true,
   "license": "UNLICENSED",
   "dependencies": {
-    "express": "^4.15.4"
+    "express": "^4.15.4",
+    "mongoose": "^8.19.1"
   },
   "devDependencies": {
     "nodemon": "^2.0.7"
