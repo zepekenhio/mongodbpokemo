@@ -2,7 +2,7 @@ var express = require('express');
 var db = require('./db');
 var pokemonRouter = require('./router/pokemonRouter');
 var trainerRouter = require('./router/trainerRouter');
-var Zone = require('./model/Zone');
+var zoneRouter = require('./router/zoneRouter');
 var rateLimiter = require('./middleware/rateLimiter');
 var logger = require('./middleware/logger');
 var authRouter = require('./router/authRouter');
@@ -20,7 +20,7 @@ app.use(logger);
 // TODO: Import the pokemonRouter and assign it to the correct route:
 app.use('/api/pokemons', authMiddleware, rateLimiter, logger, pokemonRouter);
 app.use('/api/trainers', authMiddleware, trainerRouter);
-app.use('/api/zones', authMiddleware, require('./router/zoneRouter'));
+app.use('/api/zones', authMiddleware, zoneRouter);
 app.use('/api', authRouter);
 
 
