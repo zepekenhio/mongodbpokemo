@@ -14,7 +14,7 @@ const authController = {
             const newUser = new User({ username, password: hashedPassword });
             await newUser.save();
 
-            const token = jwt.sign({ id: newUser._id, username: newUser.username }, process.env.JWT_SECRET || 'ABC123DEF456', { expiresIn: '1h' });
+            const token = jwt.sign({ id: newUser._id, username: newUser.username }, process.env.JWT_SECRET || 'ABC123DEF456', { expiresIn: '24h' });
             res.status(201).json({ token });
         } catch (err) {
             if (err.code === 11000) {
@@ -42,7 +42,7 @@ const authController = {
                 return res.status(401).json({ error: 'Invalid credentials.' });
             }
 
-            const token = jwt.sign({ id: user._id, username: user.username }, process.env.JWT_SECRET || 'ABC123DEF456', { expiresIn: '1h' });
+            const token = jwt.sign({ id: user._id, username: user.username }, process.env.JWT_SECRET || 'ABC123DEF456', { expiresIn: '24h' });
             res.status(200).json({ token });
         } catch (err) {
             res.status(400).json({ error: err.message });
