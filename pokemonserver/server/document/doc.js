@@ -21,37 +21,10 @@ const swaggerOptions = {
           bearerFormat: 'JWT',
         },
       },
-      schemas: {
-        Pokemon: {
-          type: 'object',
-          properties: {
-            name: { type: 'string' },
-            type: { type: 'string' },
-            level: { type: 'number' },
-            trainer: { type: 'string' },
-            zone: { type: 'string' },
-          },
-        },
-        Trainer: {
-          type: 'object',
-          properties: {
-            name: { type: 'string' },
-            age: { type: 'number' },
-            pokemons: { type: 'array', items: { type: 'string' } },
-          },
-        },
-        Zone: {
-          type: 'object',
-          properties: {
-            name: { type: 'string' },
-            type: { type: 'string' },
-            pokemons: { type: 'array', items: { type: 'string' } },
-          },
-        },
-      },
+      
     },
   },
-  apis: ['./document/routeDocs/*.js'], // paths to files containing OpenAPI definitions
+  apis: ['./server/document/routeDocs/*.js'], // paths to files containing OpenAPI definitions
 };
 
 const swaggerSpec = swaggerJSDoc(swaggerOptions);
