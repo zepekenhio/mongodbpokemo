@@ -1,0 +1,641 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Pokemon API",
+    "version": "1.0.0",
+    "description": "A RESTful API for managing Pokemon, Trainers, and Zones"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000"
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    },
+    "schemas": {
+      "Pokemon": {
+        "type": "object",
+        "properties": {
+          "_id": {
+            "type": "string",
+            "description": "Pokemon unique identifier",
+            "example": "507f1f77bcf86cd799439011"
+          },
+          "number": {
+            "type": "number",
+            "description": "Pokemon number",
+            "example": 25
+          },
+          "name": {
+            "type": "string",
+            "description": "Pokemon name",
+            "example": "Pikachu"
+          },
+          "types": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Pokemon types",
+            "example": [
+              "Electric"
+            ]
+          },
+          "imageUrl": {
+            "type": "string",
+            "description": "Pokemon image URL",
+            "example": "https://example.com/pikachu.png"
+          },
+          "trainer": {
+            "type": "string",
+            "description": "Trainer ID reference",
+            "example": "507f1f77bcf86cd799439012"
+          },
+          "zone": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Zone ID references",
+            "example": [
+              "507f1f77bcf86cd799439013"
+            ]
+          }
+        },
+        "required": [
+          "number",
+          "name"
+        ]
+      },
+      "Trainer": {
+        "type": "object",
+        "properties": {
+          "_id": {
+            "type": "string",
+            "description": "Trainer unique identifier",
+            "example": "507f1f77bcf86cd799439012"
+          },
+          "name": {
+            "type": "string",
+            "description": "Trainer name",
+            "example": "Ash Ketchum"
+          },
+          "age": {
+            "type": "number",
+            "description": "Trainer age",
+            "example": 15
+          }
+        },
+        "required": [
+          "name",
+          "age"
+        ]
+      },
+      "Zone": {
+        "type": "object",
+        "properties": {
+          "_id": {
+            "type": "string",
+            "description": "Zone unique identifier",
+            "example": "507f1f77bcf86cd799439013"
+          },
+          "name": {
+            "type": "string",
+            "description": "Zone name",
+            "example": "Viridian Forest"
+          },
+          "region": {
+            "type": "string",
+            "description": "Zone region",
+            "example": "Kanto"
+          },
+          "pokemons": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Pokemon ID references",
+            "example": [
+              "507f1f77bcf86cd799439011"
+            ]
+          }
+        },
+        "required": [
+          "name",
+          "region"
+        ]
+      }
+    }
+  },
+  "paths": {
+    "/api/register": {
+      "post": {
+        "summary": "Register a new user",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "username": {
+                    "type": "string"
+                  },
+                  "password": {
+                    "type": "string"
+                  }
+                }
+              },
+              "example": {
+                "username": "testuser",
+                "password": "testpass123"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "User registered successfully"
+          }
+        }
+      }
+    },
+    "/api/login": {
+      "post": {
+        "summary": "Login a user",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "username": {
+                    "type": "string"
+                  },
+                  "password": {
+                    "type": "string"
+                  }
+                }
+              },
+              "example": {
+                "username": "testuser",
+                "password": "testpass123"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Login successful, returns token",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "token": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/pokemons": {
+      "get": {
+        "summary": "Retrieve all pokemons",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A list of pokemons",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Pokemon"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Create a new pokemon",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Pokemon"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Pokemon created successfully"
+          }
+        }
+      }
+    },
+    "/api/pokemons/{id}": {
+      "get": {
+        "summary": "Retrieve a pokemon by ID",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "507f1f77bcf86cd799439011",
+            "description": "The pokemon ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A single pokemon",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Pokemon"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "summary": "Update a pokemon by ID",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "507f1f77bcf86cd799439011",
+            "description": "The pokemon ID"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Pokemon"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Pokemon updated successfully"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete a pokemon by ID",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "507f1f77bcf86cd799439011",
+            "description": "The pokemon ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Pokemon deleted successfully"
+          }
+        }
+      }
+    },
+    "/api/trainers": {
+      "get": {
+        "summary": "Retrieve all trainers",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A list of trainers",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Trainer"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Create a new trainer",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Trainer"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Trainer created successfully"
+          }
+        }
+      }
+    },
+    "/api/trainers/{id}": {
+      "get": {
+        "summary": "Retrieve a trainer by ID",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "507f1f77bcf86cd799439011",
+            "description": "The trainer ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A single trainer",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Trainer"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "summary": "Update a trainer by ID",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "507f1f77bcf86cd799439011",
+            "description": "The trainer ID"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Trainer"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Trainer updated successfully"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete a trainer by ID",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "507f1f77bcf86cd799439011",
+            "description": "The trainer ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Trainer deleted successfully"
+          }
+        }
+      }
+    },
+    "/api/zones": {
+      "get": {
+        "summary": "Retrieve all zones",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A list of zones",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Zone"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Create a new zone",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Zone"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Zone created successfully"
+          }
+        }
+      }
+    },
+    "/api/zones/{id}": {
+      "get": {
+        "summary": "Retrieve a zone by ID",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "507f1f77bcf86cd799439011",
+            "description": "The zone ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A single zone",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Zone"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "summary": "Update a zone by ID",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "507f1f77bcf86cd799439011",
+            "description": "The zone ID"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Zone"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Zone updated successfully"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete a zone by ID",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "507f1f77bcf86cd799439011",
+            "description": "The zone ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Zone deleted successfully"
+          }
+        }
+      }
+    }
+  },
+  "tags": []
+}

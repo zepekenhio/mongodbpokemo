@@ -42,6 +42,7 @@
  *         required: true
  *         schema:
  *           type: string
+ *         example: "68e8e045dd0bfa6e252ac1d9"
  *         description: The pokemon ID
  *     responses:
  *       200:
@@ -60,6 +61,7 @@
  *         required: true
  *         schema:
  *           type: string
+ *         example: "68e8e045dd0bfa6e252ac1d2"
  *         description: The pokemon ID
  *     requestBody:
  *       required: true
@@ -80,6 +82,7 @@
  *         required: true
  *         schema:
  *           type: string
+ *         example: "68e8e045dd0bfa6e252ac1d5"
  *         description: The pokemon ID
  *     responses:
  *       200:

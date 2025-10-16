@@ -11,6 +11,8 @@ var authMiddleware = require('./middleware/authMiddleware');
 var swaggerUi = require('swagger-ui-express');
 var swaggerSpec = require('./document/doc.js');
 
+const fs = require('fs');
+
 
 
 var app = express(); 
@@ -24,11 +26,12 @@ app.use(logger);
 
 
 // TODO: Import the pokemonRouter and assign it to the correct route:
-app.use('/api/pokemons', authMiddleware, rateLimiter, logger, pokemonRouter);
-app.use('/api/trainers', authMiddleware, trainerRouter);
-app.use('/api/zones', authMiddleware, zoneRouter);
+app.use('/api/pokemons', rateLimiter, logger, pokemonRouter);
+app.use('/api/trainers', rateLimiter, logger, trainerRouter);
+app.use('/api/zones', rateLimiter, logger, zoneRouter);
 app.use('/api', authRouter);
 
+//fs.writeFileSync('./server/doc.json', JSON.stringify(swaggerSpec, null, 2));
 
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 

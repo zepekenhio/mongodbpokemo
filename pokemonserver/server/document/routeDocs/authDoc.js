@@ -14,6 +14,9 @@
  *                 type: string
  *               password:
  *                 type: string
+ *           example:
+ *             username: "testuser"
+ *             password: "testpass123"
  *     responses:
  *       201:
  *         description: User registered successfully
@@ -35,6 +38,9 @@
  *                 type: string
  *               password:
  *                 type: string
+ *           example:
+ *             username: "testuser"
+ *             password: "testpass123"
  *     responses:
  *       200:
  *         description: Login successful, returns token

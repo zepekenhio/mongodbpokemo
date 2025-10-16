@@ -4,11 +4,11 @@ var authMiddleware = require('../middleware/authMiddleware');
 
 pokemonRouter.route('/')
   .get(pokemonController.retrieve)
-  .post(authMiddleware, pokemonController.createOne);
+  .post( pokemonController.createOne);
 
 pokemonRouter.route('/:id')
   .get(pokemonController.retrieveOne)
-  .put(authMiddleware, pokemonController.updateOne)
-  .delete(authMiddleware, pokemonController.deleteOne);
+  .put( pokemonController.updateOne)
+  .delete( pokemonController.deleteOne);
 
 module.exports = pokemonRouter;

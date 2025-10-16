@@ -42,6 +42,7 @@
  *         required: true
  *         schema:
  *           type: string
+ *         example: "507f1f77bcf86cd799439011"
  *         description: The trainer ID
  *     responses:
  *       200:
@@ -60,6 +61,7 @@
  *         required: true
  *         schema:
  *           type: string
+ *         example: "507f1f77bcf86cd799439011"
  *         description: The trainer ID
  *     requestBody:
  *       required: true
@@ -80,6 +82,7 @@
  *         required: true
  *         schema:
  *           type: string
+ *         example: "507f1f77bcf86cd799439011"
  *         description: The trainer ID
  *     responses:
  *       200:
